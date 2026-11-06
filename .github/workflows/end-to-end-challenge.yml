@@ -1,22 +1,12 @@
-name: ci
-
+name: End-to-End Pipeline
 on: [push]
-
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
+      - run: npm install
+      - run: npm test
